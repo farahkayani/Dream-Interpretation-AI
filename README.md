@@ -128,6 +128,7 @@ BibTeX:
   author = {Farah Asaad Kayani},
   title = {Dream Interpretation AI using RAG + LoRA Fine-Tuning},
   year = {2025},
-  howpublished = {\url{[https://github.com/farahkayani/Dream-Interpretation-AI}}
+  howpublished = https://github.com/farahkayani/Dream-Interpretation-AI
+
 }
 ```
