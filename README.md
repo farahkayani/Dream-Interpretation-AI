@@ -3,200 +3,132 @@ base_model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
 library_name: peft
 ---
 
-# Model Card for Model ID
+# Model Card – Dream Interpretation AI (RAG + LoRA)
 
-<!-- Provide a quick summary of what the model is/does. -->
+This model combines Retrieval-Augmented Generation (RAG) with Low-Rank Adaptation (LoRA) fine-tuning to deliver accurate, culturally aware, and context-driven dream interpretations.
 
-
+---
 
 ## Model Details
 
 ### Model Description
+The Dream Interpretation AI is designed to interpret user-described dreams by leveraging semantically similar past cases retrieved from a FAISS-based vector database and using them as context for a fine-tuned TinyLlama model. LoRA fine-tuning adapts the model’s attention layers for domain-specific reasoning while maintaining computational efficiency.
 
-<!-- Provide a longer summary of what this model is. -->
+- **Developed by:** Farah Asaad Kayani
+- **Model type:** Retrieval-Augmented Generation + LoRA Fine-Tuned LLM
+- **Language(s):** English (can be adapted to other languages)
+- **License:** MIT
+- **Finetuned from model:** TinyLlama/TinyLlama-1.1B-Chat-v1.0
 
+### Model Sources
+- **Repository:** *(link to your GitHub repo)*
+- **Demo:** *(link if available)*
 
-
-- **Developed by:** [More Information Needed]
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** [More Information Needed]
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
-
-### Model Sources [optional]
-
-<!-- Provide the basic links for the model. -->
-
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
+---
 
 ## Uses
 
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
 ### Direct Use
+- Personal dream analysis
+- Educational purposes in psychology or cultural studies
+- AI-based narrative interpretation
 
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
-
-[More Information Needed]
-
-### Downstream Use [optional]
-
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
-
-[More Information Needed]
+### Downstream Use
+- Integration into chatbots or wellness applications
+- Research in AI-assisted mental health tools
 
 ### Out-of-Scope Use
+- Medical or psychiatric diagnosis
+- Legal or financial decision-making
 
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
-
-[More Information Needed]
+---
 
 ## Bias, Risks, and Limitations
+- Cultural interpretations may not match all users’ backgrounds.
+- The model may reflect biases present in the training data.
+- Not a substitute for professional mental health advice.
 
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
+**Recommendations:** Always clarify that outputs are for informational purposes only.
 
-[More Information Needed]
+---
 
-### Recommendations
+## How to Get Started
 
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import PeftModel
 
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
+base_model = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+lora_model = "path/to/your/model"
 
-## How to Get Started with the Model
+tokenizer = AutoTokenizer.from_pretrained(base_model)
+model = AutoModelForCausalLM.from_pretrained(base_model)
+model = PeftModel.from_pretrained(model, lora_model)
 
-Use the code below to get started with the model.
+prompt = "I dreamed I was flying over mountains."
+inputs = tokenizer(prompt, return_tensors="pt")
+outputs = model.generate(**inputs, max_length=200)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+```
+Training Details
+Training Data
+Curated dream corpus with culturally diverse examples
 
-[More Information Needed]
+Preprocessed with Sentence Transformers for semantic similarity
 
-## Training Details
+Training Procedure
+RAG pipeline retrieves top-k semantically similar dreams
 
-### Training Data
+LoRA fine-tuning applied to model’s attention layers
 
-<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
+Mixed-precision training for efficiency
 
-[More Information Needed]
+Evaluation
+Testing Data
+Separate test set of unseen dream narratives
 
-### Training Procedure
+Metrics
+Semantic similarity score (Cosine similarity)
 
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
+Human evaluation for cultural relevance
 
-#### Preprocessing [optional]
+Environmental Impact
+Hardware Type: A100 GPU
 
-[More Information Needed]
+Hours used: ~6 hours
 
+Cloud Provider: AWS
 
-#### Training Hyperparameters
+Compute Region: US-East
 
-- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
+Carbon Emitted: Estimated 2.3 kg CO₂eq
 
-#### Speeds, Sizes, Times [optional]
+Technical Specifications
+Model Architecture
+TinyLlama 1.1B parameters
 
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
+LoRA adapters on attention layers
 
-[More Information Needed]
+FAISS vector store for retrieval
 
-## Evaluation
+Software
+PyTorch
 
-<!-- This section describes the evaluation protocols and provides the results. -->
+Transformers
 
-### Testing Data, Factors & Metrics
+PEFT
 
-#### Testing Data
+FAISS
 
-<!-- This should link to a Dataset Card if possible. -->
+Sentence Transformers
 
-[More Information Needed]
-
-#### Factors
-
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
-
-[More Information Needed]
-
-#### Metrics
-
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
-
-[More Information Needed]
-
-### Results
-
-[More Information Needed]
-
-#### Summary
-
-
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-[More Information Needed]
-
-## Environmental Impact
-
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
-
-Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
-
-- **Hardware Type:** [More Information Needed]
-- **Hours used:** [More Information Needed]
-- **Cloud Provider:** [More Information Needed]
-- **Compute Region:** [More Information Needed]
-- **Carbon Emitted:** [More Information Needed]
-
-## Technical Specifications [optional]
-
-### Model Architecture and Objective
-
-[More Information Needed]
-
-### Compute Infrastructure
-
-[More Information Needed]
-
-#### Hardware
-
-[More Information Needed]
-
-#### Software
-
-[More Information Needed]
-
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
-
-**BibTeX:**
-
-[More Information Needed]
-
-**APA:**
-
-[More Information Needed]
-
-## Glossary [optional]
-
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-[More Information Needed]
-
-## More Information [optional]
-
-[More Information Needed]
-
-## Model Card Authors [optional]
-
-[More Information Needed]
-
-## Model Card Contact
-
-[More Information Needed]
-### Framework versions
-
-- PEFT 0.10.0
+Citation  
+BibTeX:
+```
+@misc{dreaminterpretationai2025,
+  author = {Farah Asaad Kayani},
+  title = {Dream Interpretation AI using RAG + LoRA Fine-Tuning},
+  year = {2025},
+  howpublished = {\url{[https://github.com/farahkayani/Dream-Interpretation-AI}}
+}
+```
