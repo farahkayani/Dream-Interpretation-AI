@@ -8,6 +8,13 @@ library_name: peft
 This model combines Retrieval-Augmented Generation (RAG) with Low-Rank Adaptation (LoRA) fine-tuning to deliver accurate, culturally aware, and context-driven dream interpretations.
 
 ---
+## 🎥 Project Demo
+
+[![Open Demo](https://img.shields.io/badge/Live%20Demo-Streamlit-brightgreen?style=for-the-badge&logo=streamlit)](https://dream-interpretation-ai-farah.streamlit.app/)
+
+> Click the badge above to open the Dream Interpretation AI app.
+
+---
 
 ## Model Details
 
