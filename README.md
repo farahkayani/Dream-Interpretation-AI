@@ -1,111 +1,202 @@
-Dream Interpretation AI 🌙  
-A Retrieval-Augmented Generation (RAG) + LoRA Fine-Tuned Model for Context-Aware Dream Analysis
+---
+base_model: TinyLlama/TinyLlama-1.1B-Chat-v1.0
+library_name: peft
+---
 
-📌 Overview:  
+# Model Card for Model ID
 
-The Dream Interpretation AI is a domain-specific NLP system designed to provide accurate, culturally aware, and personalized interpretations of user-submitted dreams. It combines:  
-
-Retrieval-Augmented Generation (RAG) for grounding interpretations in similar past dream cases.  
-
-Low-Rank Adaptation (LoRA) fine-tuning to adapt a base language model for the dream interpretation domain without full retraining.  
-
-The system retrieves semantically relevant dream narratives from a FAISS-powered vector database, formats them as contextual input, and passes them to a LoRA fine-tuned TinyLlama model for generating insightful interpretations.
-
-🚀 Features: 
-Context-Aware Responses — Incorporates real dream examples into interpretations.  
-
-Efficient Fine-Tuning — Uses LoRA for domain adaptation with minimal compute cost.  
-
-Semantic Search — FAISS + Sentence Transformers for accurate retrieval.  
-
-Culturally Attuned — Trained on curated dream interpretation datasets.  
-  
-🏗 Architecture  
-User Input — User describes their dream.  
-
-Document Retrieval — FAISS + Sentence Transformers retrieve similar dreams.
-
-Context Construction — Retrieved cases formatted for LLM input.
-
-LLM Generation — LoRA fine-tuned TinyLlama generates the interpretation.
-
-Response Delivery — Output is presented to the user.
-
-📂 Project Structure
-```
-dream-interpretation-ai/
-│
-├── data/                          # Dream corpus and FAISS index files
-│   ├── corpus.jsonl
-│   ├── faiss.index
-│   └── meta.pkl
-│
-├── build_index.py                  # Builds FAISS index from corpus
-├── rag_query.py                    # Runs the interactive RAG-powered interpretation
-├── prepare_lora_dataset.py         # Converts corpus into LoRA fine-tuning format
-├── lora_train.py                   # Fine-tunes the model with LoRA
-│
-├── requirements.txt                # Dependencies
-└── README.md                       # Project documentation
-```
+<!-- Provide a quick summary of what the model is/does. -->
 
 
-⚙️ Installation
-1️⃣ Clone the Repository
 
-git clone https://github.com/farahkayani/Dream-Interpretation-AI/tree/main  
-cd dream-interpretation-ai
+## Model Details
 
-2️⃣ Install Dependencies
+### Model Description
 
-pip install -r requirements.txt
-
-📊 Usage
-Steps:
-1. Build the FAISS Index
-   python build_index.py
-
-2. Run the AI Interpreter
-   python rag_query.py
-
-3. Prepare Dataset for LoRA Training
-   python prepare_lora_dataset.py
-
-4. Train with LoRA
-   python lora_train.py
-   
-
-📦 Requirements  
-Python 3.8+
-
-PyTorch
-
-sentence-transformers
-
-faiss
-
-transformers
-
-peft
-
-datasets
-
-Install all dependencies with:
-pip install -r requirements.txt
-
-📝 Example
-User Input:
-“I was walking through a quiet garden when I suddenly saw a large snake coiled around a tree. Its eyes seemed to follow me, and I felt a mix of fear and fascination as it slithered closer.”
-
-AI Output:
-- Related dreams
-"Seeing a snake in a dream may symbolize hidden threats, betrayal, or transformation. The snake's behavior and your reaction to it greatly influence its meaning.”
-- Interpretation
-"The dream's main message is that you may have been confronted with a hidden danger or threat in your life.”
+<!-- Provide a longer summary of what this model is. -->
 
 
-📜 License
-This project is licensed under the MIT License. See the LICENSE file for details.
 
-👩‍💻 Author
-Farah — AI and NLP Developer
+- **Developed by:** [More Information Needed]
+- **Funded by [optional]:** [More Information Needed]
+- **Shared by [optional]:** [More Information Needed]
+- **Model type:** [More Information Needed]
+- **Language(s) (NLP):** [More Information Needed]
+- **License:** [More Information Needed]
+- **Finetuned from model [optional]:** [More Information Needed]
+
+### Model Sources [optional]
+
+<!-- Provide the basic links for the model. -->
+
+- **Repository:** [More Information Needed]
+- **Paper [optional]:** [More Information Needed]
+- **Demo [optional]:** [More Information Needed]
+
+## Uses
+
+<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
+
+### Direct Use
+
+<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
+
+[More Information Needed]
+
+### Downstream Use [optional]
+
+<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
+
+[More Information Needed]
+
+### Out-of-Scope Use
+
+<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
+
+[More Information Needed]
+
+## Bias, Risks, and Limitations
+
+<!-- This section is meant to convey both technical and sociotechnical limitations. -->
+
+[More Information Needed]
+
+### Recommendations
+
+<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
+
+Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
+
+## How to Get Started with the Model
+
+Use the code below to get started with the model.
+
+[More Information Needed]
+
+## Training Details
+
+### Training Data
+
+<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
+
+[More Information Needed]
+
+### Training Procedure
+
+<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
+
+#### Preprocessing [optional]
+
+[More Information Needed]
+
+
+#### Training Hyperparameters
+
+- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
+
+#### Speeds, Sizes, Times [optional]
+
+<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
+
+[More Information Needed]
+
+## Evaluation
+
+<!-- This section describes the evaluation protocols and provides the results. -->
+
+### Testing Data, Factors & Metrics
+
+#### Testing Data
+
+<!-- This should link to a Dataset Card if possible. -->
+
+[More Information Needed]
+
+#### Factors
+
+<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
+
+[More Information Needed]
+
+#### Metrics
+
+<!-- These are the evaluation metrics being used, ideally with a description of why. -->
+
+[More Information Needed]
+
+### Results
+
+[More Information Needed]
+
+#### Summary
+
+
+
+## Model Examination [optional]
+
+<!-- Relevant interpretability work for the model goes here -->
+
+[More Information Needed]
+
+## Environmental Impact
+
+<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
+
+Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
+
+- **Hardware Type:** [More Information Needed]
+- **Hours used:** [More Information Needed]
+- **Cloud Provider:** [More Information Needed]
+- **Compute Region:** [More Information Needed]
+- **Carbon Emitted:** [More Information Needed]
+
+## Technical Specifications [optional]
+
+### Model Architecture and Objective
+
+[More Information Needed]
+
+### Compute Infrastructure
+
+[More Information Needed]
+
+#### Hardware
+
+[More Information Needed]
+
+#### Software
+
+[More Information Needed]
+
+## Citation [optional]
+
+<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
+
+**BibTeX:**
+
+[More Information Needed]
+
+**APA:**
+
+[More Information Needed]
+
+## Glossary [optional]
+
+<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
+
+[More Information Needed]
+
+## More Information [optional]
+
+[More Information Needed]
+
+## Model Card Authors [optional]
+
+[More Information Needed]
+
+## Model Card Contact
+
+[More Information Needed]
+### Framework versions
+
+- PEFT 0.10.0

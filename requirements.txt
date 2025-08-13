@@ -1,0 +1,15 @@
+# requirements.txt
+torch>=2.0.0
+transformers>=4.33.0
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4.post2  # or faiss-gpu if available
+datasets>=2.12.0
+peft>=0.4.0
+accelerate>=0.21.0
+scikit-learn
+rank_bm25
+tqdm
+numpy
+pandas
+nltk
+pytest  # optional for unit tests
