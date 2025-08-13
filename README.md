@@ -21,8 +21,7 @@ The Dream Interpretation AI is designed to interpret user-described dreams by le
 - **Finetuned from model:** TinyLlama/TinyLlama-1.1B-Chat-v1.0
 
 ### Model Sources
-- **Repository:** *(link to your GitHub repo)*
-- **Demo:** *(link if available)*
+- **Repository:** * https://github.com/farahkayani/Dream-Interpretation-AI *
 
 ---
 
